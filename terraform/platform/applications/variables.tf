@@ -8,15 +8,6 @@ variable "region" {
   type        = string
 }
 
-variable "service_name" {
-  description = "Nom du service Cloud Run"
-  type        = string
-}
-
-variable "service_account" {
-  description = "Service Account utilisé par Cloud Run ET Cloud Build"
-  type        = string
-}
 
 variable "data_source_api_image_tag" {
   description = "Tag de l'image Docker"
@@ -33,5 +24,14 @@ variable "data_source_api" {
   type        = string
 }
 
+variable "bucket_name" {
+  description = "nom du bucket "
+  type        = string
+}
 
+variable "service_account_email" {
+  description = "Email du service account"
+  type        = string
+
+}
 

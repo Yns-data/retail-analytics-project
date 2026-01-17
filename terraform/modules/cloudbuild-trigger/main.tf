@@ -1,21 +1,20 @@
+resource "google_cloudbuild_trigger" "data-source-api-trigger" {
+  name = "trigger-ci"
 
-resource "google_cloudbuild_trigger" "folder_trigger" {
-  name        = "trigger-ci"
-  
   service_account = "projects/${var.project_id}/serviceAccounts/${var.service_account_email}"
 
-  
   github {
     owner = "Yns-data"
-    name  = "Data_Api"
+    name  = "retail-analytics-project"
 
     push {
       branch = "^main$"
     }
   }
 
+  # Déclenchement uniquement si un fichier dans ci-cd/ change
+  included_files = ["data-source-api/**"]
+
   # Fichier Cloud Build à exécuter
-  filename = "cloudbuild.yaml"
-
-
+  filename = "ci-cd/data-source-api-deployment.yaml"
 }

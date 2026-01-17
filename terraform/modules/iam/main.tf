@@ -1,5 +1,5 @@
 resource "google_service_account" "full_access_sa" {
-  account_id   = "platform-full-access-data-engineering"
+  account_id   = "platform-full-access-data"
   display_name = "Platform Full Access Service Account"
 }
 

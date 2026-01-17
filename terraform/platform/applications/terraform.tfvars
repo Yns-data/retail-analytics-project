@@ -3,3 +3,4 @@ region     = "europe-west9"
 repo_name = "data-api"
 data_source_api = "fastapi-app"
 # data_source_api_image_tag = "latest"
+service_account_email = 
