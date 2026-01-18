@@ -14,23 +14,9 @@ variable "service_account" {
   type        = string
 }
 
-variable "data_source_api_image_tag" {
-  description = "Tag de l'image Docker"
-  type        = string
-}
 
 variable "repo_name" {
   description = "Nom du repository Docker"
-  type        = string
-}
-
-variable "data_source_api" {
-  description = "Image docker de l'API source de données"
-  type        = string
-}
-
-variable "bucket_name" {
-  description = "nom du bucket "
   type        = string
 }
 

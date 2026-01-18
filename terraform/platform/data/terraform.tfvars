@@ -1,5 +1,4 @@
 project_id = "glossy-metric-481911-c7"
 region     = "europe-west9"
 repo_name = "data-api"
-data_source_api = "fastapi-app"
 # data_source_api_image_tag = "latest"

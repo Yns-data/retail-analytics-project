@@ -11,7 +11,7 @@ steps:
     - build
     - '-t'
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
-    - '.'
+    - 'data-source-api'
 
 # 2️⃣ Push image
 - name: 'gcr.io/cloud-builders/docker'

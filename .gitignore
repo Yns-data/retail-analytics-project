@@ -15,3 +15,9 @@ terraform/platform/.terraform/modules/modules.json
 terraform/platform/.terraform/providers/registry.terraform.io/hashicorp/google/5.45.2/linux_amd64/LICENSE.txt
 .gitignore
 terraform/platform/.terraform/providers/registry.terraform.io/hashicorp/google/5.45.2/linux_amd64/terraform-provider-google_v5.45.2_x5
+terraform/platform/data/.terraform/terraform.tfstate
+terraform/platform/data/.terraform/modules/modules.json
+terraform/platform/data/.terraform/providers/registry.terraform.io/hashicorp/google/7.16.0/linux_amd64/LICENSE.txt
+terraform/platform/data/.terraform/providers/registry.terraform.io/hashicorp/google/7.16.0/linux_amd64/terraform-provider-google_v7.16.0_x5
+terraform/platform/data/.terraform.lock.hcl
+terraform/platform/data/.terraform/*

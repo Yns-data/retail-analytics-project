@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "bucket_datalake" {
-  name     = "retail-analytics-data-lake"
+  name     = "retail-analytics-data-lake-${var.project_id}"
   location = var.region
 
   lifecycle_rule {
@@ -40,8 +40,4 @@ resource "google_storage_bucket" "bucket_datalake" {
       age = 730
     }
   }
-}
-resource "google_storage_bucket" "bucket_tf_states" {
-  name     = "tf-states-retail-analytics"
-  location = var.region
 }

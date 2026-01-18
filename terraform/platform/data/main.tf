@@ -6,26 +6,26 @@ locals {
 }
 
 module "iam" {
-  source     = "./././modules/iam"
+  source     = "../../modules/iam"
   project_id = local.common.project_id
 }
 
 module "artifact_registry" {
-  source     = "./././modules/artifact-registry"
+  source     = "../../modules/artifact-registry"
   project_id = local.common.project_id
   region     = local.common.region
   repo_name  = var.repo_name
 }
 
 module "bigquery" {
-  source     = "./././modules/bigquery"
+  source     = "../../modules/bigquery"
   project_id = local.common.project_id
   region     = local.common.region
 }
 
 
 module "cloud_build" {
-  source = "./././modules/cloudbuild-trigger"
+  source = "../../modules/cloudbuild-trigger"
 
   project_id          = local.common.project_id
   region              = local.common.region
@@ -33,6 +33,8 @@ module "cloud_build" {
 }
 
 module "google_storage_buckets" {
-  source = "./././modules/google-cloud-storage"
+  source = "../../modules/google-cloud-storage"
   region              = local.common.region
+  project_id          = local.common.project_id
+
 }

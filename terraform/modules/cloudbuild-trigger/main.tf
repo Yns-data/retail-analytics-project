@@ -1,5 +1,5 @@
 resource "google_cloudbuild_trigger" "data-source-api-trigger" {
-  name = "trigger-ci"
+  name = "trigger-datasource-api"
 
   service_account = "projects/${var.project_id}/serviceAccounts/${var.service_account_email}"
 
