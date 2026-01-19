@@ -25,7 +25,7 @@ steps:
   args:
     - -c
     - |
-      cd terraform/platform/application
+      cd terraform/platform/applications
       terraform init
       terraform apply -auto-approve \
         -var="image_tag=$SHORT_SHA" \

@@ -13,7 +13,7 @@ resource "google_cloudbuild_trigger" "data-source-api-trigger" {
   }
 
   # Déclenchement uniquement si un fichier dans ci-cd/ change
-  included_files = ["data-source-api/**"]
+  included_files = ["data-source-api/**","ci-cd/data-source-api-deployment.yaml"]
 
   # Fichier Cloud Build à exécuter
   filename = "ci-cd/data-source-api-deployment.yaml"
