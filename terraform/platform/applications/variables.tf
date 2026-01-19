@@ -25,9 +25,3 @@ variable "data_source_api" {
 }
 
 
-variable "service_account_email" {
-  description = "Email du service account"
-  type        = string
-
-}
-
