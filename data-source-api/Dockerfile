@@ -10,12 +10,10 @@ RUN apt-get update && apt-get install -y \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# Copier les fichiers d'installation
 COPY setup.py .
 COPY main.py .
 COPY src/ ./src/
 
-# Installer le package + dépendances (fastapi, uvicorn)
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir .
 
