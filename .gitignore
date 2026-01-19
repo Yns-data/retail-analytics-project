@@ -21,3 +21,4 @@ terraform/platform/data/.terraform/providers/registry.terraform.io/hashicorp/goo
 terraform/platform/data/.terraform/providers/registry.terraform.io/hashicorp/google/7.16.0/linux_amd64/terraform-provider-google_v7.16.0_x5
 terraform/platform/data/.terraform.lock.hcl
 terraform/platform/data/.terraform/*
+data-source-api/__pycache__/main.cpython-312.pyc
