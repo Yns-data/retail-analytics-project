@@ -24,10 +24,6 @@ variable "data_source_api" {
   type        = string
 }
 
-variable "bucket_name" {
-  description = "nom du bucket "
-  type        = string
-}
 
 variable "service_account_email" {
   description = "Email du service account"
