@@ -13,21 +13,25 @@ SECRET_NAME = os.getenv("SECRET_NAME")
 VERSION = os.getenv("VERSION")
 API_KEY_NAME = os.getenv("DATA_API_KEY_NAME")
 
-def get_gcp_secret(project_id:str,secret_name:str,version:str):
+def get_gcp_secret():
     client = secretmanager.SecretManagerServiceClient()
-    secret_path = f"projects/{project_id}/secrets/{secret_name}/versions/{version}"
+    secret_path = f"projects/{PROJECT_ID}/secrets/{SECRET_NAME}/versions/{VERSION}"
     response = client.access_secret_version(name=secret_path)
     return response.payload.data.decode("UTF-8")
 
-API_KEY = get_gcp_secret(PROJECT_ID,SECRET_NAME,VERSION)
+API_KEY = get_gcp_secret()
 api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
 
-def get_api_key(api_key:str = API_KEY,api_key_header: str = Security(api_key_header)):
-    if api_key_header == api_key:
-        return api_key_header
+
+def get_api_key(
+    api_key_header_value: str = Security(api_key_header),
+) -> str:
+    if api_key_header_value == API_KEY:
+        return api_key_header_value
+
     raise HTTPException(
         status_code=status.HTTP_403_FORBIDDEN,
-        detail="Could not validate credentials"
+        detail="Could not validate credentials",
     )
 
 def process_dates(
