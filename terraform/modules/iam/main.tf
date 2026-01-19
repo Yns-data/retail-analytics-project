@@ -23,6 +23,10 @@ resource "google_project_iam_member" "full_access_roles" {
     # Cloud Build
     "roles/cloudbuild.builds.editor",
 
+    # Cloud Logging
+    "roles/logging.logWriter",
+    "roles/logging.viewer",
+
     # IAM (pour permettre à Cloud Build / Run d’utiliser le SA)
     "roles/iam.serviceAccountUser"
   ])
