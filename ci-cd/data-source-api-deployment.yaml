@@ -28,7 +28,7 @@ steps:
       cd terraform/platform/applications
       terraform init
       terraform apply -auto-approve \
-        -var="image_tag=$SHORT_SHA" \
+        -var="data_source_api_image_tag=$SHORT_SHA" \
         
 
 options:
