@@ -42,7 +42,7 @@ resource "google_cloud_run_v2_service" "source-data-api" {
       }
       env {
         name  = "VERSION"
-        value = "latest"
+        value = 1
       
       }
 
