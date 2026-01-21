@@ -17,8 +17,8 @@ generator = MetricsGenerator(min_visitors=50, max_visitors=500)
 
 @app.get("/cities")
 def get_cities_api(
-    date: Optional[str] = Query(EXAMPLE_INPUTS["single_date"], description="Single date in YYYY-MM-DD-HH-MM-SS-MM-SS format"),
-    dates: Optional[list[str]] = Query(EXAMPLE_INPUTS["multiple_dates"], description="Multiple dates in YYYY-MM-DD-HH-MM-SS format"),
+    date: Optional[str]=None,
+    dates: Optional[list[str]]=Query(None),
     api_key_header: APIKey = Depends(get_api_key)
 ):
     """
@@ -49,8 +49,8 @@ def get_cities_api(
 
 @app.get("/pages_viewed")
 def get_pages_viewed_api(
-    date: Optional[str] = Query(EXAMPLE_INPUTS["single_date"], description="Single date in YYYY-MM-DD-HH-MM-SS-MM-SS format"),
-    dates: Optional[list[str]] = Query(EXAMPLE_INPUTS["multiple_dates"], description="Multiple dates in YYYY-MM-DD-HH-MM-SS format"),
+    date: Optional[str]=None,
+    dates: Optional[list[str]]=Query(None),
     api_key_header: APIKey = Depends(get_api_key)
 
 ):
@@ -82,8 +82,8 @@ def get_pages_viewed_api(
 
 @app.get("/visitors")
 def get_visitors_api(
-    date: Optional[str] = Query(EXAMPLE_INPUTS["single_date"], description="Single date in YYYY-MM-DD-HH-MM-SS-MM-SS format"),
-    dates: Optional[list[str]] = Query(EXAMPLE_INPUTS["multiple_dates"], description="Multiple dates in YYYY-MM-DD-HH-MM-SS format"),
+    date: Optional[str]=None,
+    dates: Optional[list[str]]=Query(None),
     api_key_header: APIKey = Depends(get_api_key)
 
 ):
@@ -116,8 +116,8 @@ def get_visitors_api(
 @app.get("/articles/{category}")
 def get_articles_by_category(
     category: str,
-    date: Optional[str] = Query(EXAMPLE_INPUTS["single_date"], description="Single date in YYYY-MM-DD-HH-MM-SS-MM-SS format"),
-    dates: Optional[list[str]] = Query(EXAMPLE_INPUTS["multiple_dates"], description="Multiple dates in YYYY-MM-DD-HH-MM-SS format"),
+    date: Optional[str]=None,
+    dates: Optional[list[str]]=Query(None),
     api_key_header: APIKey = Depends(get_api_key)
 ):
     """
@@ -150,6 +150,6 @@ def get_articles_by_category(
         return JSONResponse(
             status_code=400,
             content={"error": str(e)})
-# if __name__ == "__main__":
-#     import uvicorn
-#     uvicorn.run(app, host="0.0.0.0", port=8000)
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
