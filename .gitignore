@@ -35,4 +35,3 @@ terraform/platform/applications/data-jobs/.terraform/terraform.tfstate
 terraform/platform/applications/data-jobs/.terraform/providers/registry.terraform.io/hashicorp/google/7.17.0/linux_amd64/LICENSE.txt
 terraform/platform/applications/data-jobs/.terraform/modules/modules.json
 terraform/platform/applications/data-jobs/.terraform.lock.hcl
-data-extraction/requirements.txt
