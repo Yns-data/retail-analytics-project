@@ -16,15 +16,7 @@ variable "service_account" {
 
 
 
-variable "image_data_source" {
-  description = "Image docker de l'API source de données"
-  type        = string
+variable "scheduler_cron_for_extraction_job" {
+  type =string
+  default = "* * * * *"
 }
-
-variable "fastapi_port" {
-  description = "Port exposition de l'app fastapi"
-  type        = number
-  default     = 8000
-}
-
-

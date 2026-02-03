@@ -29,20 +29,20 @@ resource "google_cloud_run_v2_service" "source-data-api" {
       }
 
       env {
-        name  = "DATA_API_KEY_NAME"
-        value = "access_token"
+        name  = var.env_data_api_key_name
+        value = var.data_api_key_name
       }
       env {
-        name  = "PROJECT_ID"
+        name  = var.env_project_id
         value = var.project_id
       }
       env {
-        name  = "SECRET_NAME"
-        value = "DATA_API_KEY"
+        name  = var.env_secret_name
+        value = var.secret_name
       }
       env {
-        name  = "VERSION"
-        value = "first"
+        name  = var.env_version_secret_name
+        value = var.version_secret
       
       }
 

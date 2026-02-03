@@ -1,0 +1,36 @@
+locals {
+  common = {
+    project_id = var.project_id
+    region     = var.region
+  }
+}
+
+module "cloud_run_job_data_extraction" {
+  count = var.enable_cloud_run_extraction_job ? 1:0
+  source = "../../../modules/cloud-run/cloud-run-jobs"
+  project_id          = local.common.project_id
+  region              = local.common.region
+  repo_name = var.repo_name
+  service_account = data.terraform_remote_state.data_platform.outputs.service_account_email
+  cloud_run_jobs = {
+    extraction = {
+      name =  "extraction_from_data_source_api"
+      image_name = var.extraction_job_image_name
+      image_tag = var.image_extraction_from_data_source_api_tag
+      env = {
+      (var.env_data_api_key_name) = var.data_api_key_name
+      (var.env_project_id) = local.common.project_id
+      (var.env_secret_name) = var.secret_name
+      (var.env_version_secret_name) = var.version_secret
+      (var.env_datalake_bucket_name) = data.terraform_remote_state.data_platform.outputs.data_lake_bucket_name
+      (var.env_API_URL_name) =  data.terraform_remote_state.data_source.outputs.cloud_run_api_source_url
+      }
+      scheduler = {
+        enabled = true
+        schedule = var.scheduler_cron_for_extraction_job
+    
+      }
+
+    }
+  }
+}

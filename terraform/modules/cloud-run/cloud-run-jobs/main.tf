@@ -1,0 +1,28 @@
+resource "google_cloud_run_v2_job" "jobs" {
+  for_each = var.cloud_run_jobs
+  project  = var.project_id
+  name     = each.value.name
+  location = var.region
+
+  template {
+    template {
+      max_retries = 3
+
+      containers {
+        image = "${var.region}-docker.pkg.dev/${var.project_id}/${var.
+        repo_name}/${each.value.image_name}:${each.value.image_tag}"
+      
+      dynamic "env" {
+        for_each = each.value.env
+        content {
+          name = env.key
+          value = env.value
+        }
+        
+      }
+
+      }
+    }
+  }
+}
+

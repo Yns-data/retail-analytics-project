@@ -24,3 +24,15 @@ terraform/platform/data/.terraform/*
 data-source-api/__pycache__/main.cpython-312.pyc
 terraform/platform/applications/.terraform.lock.hcl
 terraform/platform/applications/.terraform/*
+terraform/platform/applications/data-source-api/.terraform/terraform.tfstate
+terraform/platform/applications/data-source-api/.terraform/modules/modules.json
+terraform/platform/applications/data-source-api/.terraform/providers/registry.terraform.io/hashicorp/google/7.17.0/linux_amd64/LICENSE.txt
+terraform/platform/applications/data-source-api/.terraform/providers/registry.terraform.io/hashicorp/google/7.17.0/linux_amd64/terraform-provider-google_v7.17.0_x5
+terraform/platform/applications/data-jobs/.terraform/providers/registry.terraform.io/hashicorp/google/7.17.0/linux_amd64/terraform-provider-google_v7.17.0_x5
+terraform/platform/applications/data-source-api/.terraform.lock.hcl
+terraform/platform/applications/data-jobs/.terraform/terraform.tfstate
+.gitignore
+terraform/platform/applications/data-jobs/.terraform/providers/registry.terraform.io/hashicorp/google/7.17.0/linux_amd64/LICENSE.txt
+terraform/platform/applications/data-jobs/.terraform/modules/modules.json
+terraform/platform/applications/data-jobs/.terraform.lock.hcl
+data-extraction/requirements.txt

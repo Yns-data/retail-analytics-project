@@ -18,3 +18,24 @@ resource "google_cloudbuild_trigger" "data-source-api-trigger" {
   # Fichier Cloud Build à exécuter
   filename = "ci-cd/data-source-api-deployment.yaml"
 }
+
+resource "google_cloudbuild_trigger" "data-extraction-job-trigger" {
+  name = "data-extraction-job-trigger"
+
+  service_account = "projects/${var.project_id}/serviceAccounts/${var.service_account_email}"
+
+  github {
+    owner = "Yns-data"
+    name  = "retail-analytics-project"
+
+    push {
+      branch = "^main$"
+    }
+  }
+
+  # Déclenchement uniquement si un fichier dans ci-cd/ change
+  included_files = ["data-source-api/**","ci-cd/data-extraction-job-deployment.yaml"]
+
+  # Fichier Cloud Build à exécuter
+  filename = "ci-cd/data-extraction-job-deployment.yaml"
+}

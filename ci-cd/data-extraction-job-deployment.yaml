@@ -1,7 +1,7 @@
 substitutions:
   _REGION: europe-west9
   _REPO: data-api
-  _IMAGE: fastapi-app
+  _IMAGE: extraction-job
 
 
 steps:
@@ -11,7 +11,7 @@ steps:
     - build
     - '-t'
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
-    - 'data-source-api'
+    - 'data-extraction'
 
 # 2️⃣ Push image
 - name: 'gcr.io/cloud-builders/docker'
@@ -25,11 +25,14 @@ steps:
   args:
     - -c
     - |
-      cd terraform/platform/applications/data-source-api
+      cd terraform/platform/applications/data-jobs
       terraform init
       terraform apply -auto-approve \
-        -var="data_source_api_image_tag=$SHORT_SHA" \
-        
+        -var="image_extraction_from_data_source_api_tag=$SHORT_SHA" \
+        -var="extraction_job_image_name=$_IMAGE" \
+        -var="repo_name=$_REPO" \
+        -var="region=$__REGION" \
+
 
 options:
   logging: CLOUD_LOGGING_ONLY
