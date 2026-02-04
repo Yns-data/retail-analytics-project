@@ -34,7 +34,7 @@ resource "google_cloudbuild_trigger" "data-extraction-job-trigger" {
   }
 
   # Déclenchement uniquement si un fichier dans ci-cd/ change
-  included_files = ["data-source-api/**","ci-cd/data-extraction-job-deployment.yaml"]
+  included_files = ["data-extraction/**","ci-cd/data-extraction-job-deployment.yaml"]
 
   # Fichier Cloud Build à exécuter
   filename = "ci-cd/data-extraction-job-deployment.yaml"
