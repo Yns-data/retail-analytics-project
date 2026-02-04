@@ -30,6 +30,7 @@ module "cloud_build" {
   project_id          = local.common.project_id
   region              = local.common.region
   service_account_email  = module.iam.service_account_email
+  service_account_name = module.iam.service_account_name
 }
 
 module "google_storage_buckets" {

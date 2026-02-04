@@ -20,14 +20,6 @@ steps:
     - push
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
 
-# Activation de l'api du schedualar
-- name: 'gcr.io/cloud-builders/gcloud'
-  args:
-    - services
-    - enable
-    - cloudscheduler.googleapis.com
-    - --project=${PROJECT_ID}
-  id: 'enable-scheduler-api'
 # Déployer Cloud Run via Terraform
 - name: 'hashicorp/terraform:1.6'
   entrypoint: sh

@@ -39,3 +39,10 @@ resource "google_cloudbuild_trigger" "data-extraction-job-trigger" {
   # Fichier Cloud Build à exécuter
   filename = "ci-cd/data-extraction-job-deployment.yaml"
 }
+
+
+resource "google_service_account_iam_member" "cloudbuild_use_sa" {
+  service_account_id = var.service_account_name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${var.service_account_email}"
+}

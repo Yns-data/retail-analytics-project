@@ -12,4 +12,8 @@ variable "service_account_email" {
   description = "Service Account utiliser pour les applications data"
   type        = string
 
-}  
+}
+
+variable "service_account_name" {
+  
+}
