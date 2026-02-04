@@ -13,12 +13,14 @@ steps:
     - '-t'
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
     - 'data-extraction'
+  id : "building image of the extraction job"
 
 # Push image
 - name: 'gcr.io/cloud-builders/docker'
   args:
     - push
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
+  id : "pushing image of the extraction job in artefact registry"
 
 # Déployer Cloud Run via Terraform
 - name: 'hashicorp/terraform:1.6'
@@ -34,6 +36,7 @@ steps:
         -var="repo_name=$_REPO" \
         -var="region=$_REGION" \
         -var="region_schedular=$_REGION_SCHEDULAR" \
+  id : "Building cloud run extraction job"
 
 
 
