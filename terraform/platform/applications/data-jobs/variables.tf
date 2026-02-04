@@ -95,3 +95,7 @@ variable "image_extraction_from_data_source_api_tag" {
 variable "extraction_job_image_name" {
   type = string
 }
+
+variable "region_schedular" {
+  type = string
+}

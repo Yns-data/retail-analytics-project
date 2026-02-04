@@ -16,6 +16,9 @@ resource "google_project_iam_member" "full_access_roles" {
 
     # Artifact Registry
     "roles/artifactregistry.admin",
+    
+    # Cloud Scheduler
+    "roles/cloudscheduler.admin",
 
     # Cloud Run
     "roles/run.admin",

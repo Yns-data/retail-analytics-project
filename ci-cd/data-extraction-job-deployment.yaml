@@ -1,11 +1,12 @@
 substitutions:
   _REGION: europe-west9
+  _REGION_SCHEDULAR: europe-west3
   _REPO: data-api
   _IMAGE: extraction-job
 
 
 steps:
-# 1️⃣ Build Docker
+# Build Docker
 - name: 'gcr.io/cloud-builders/docker'
   args:
     - build
@@ -13,13 +14,21 @@ steps:
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
     - 'data-extraction'
 
-# 2️⃣ Push image
+# Push image
 - name: 'gcr.io/cloud-builders/docker'
   args:
     - push
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
 
-# 3️⃣ Déployer Cloud Run via Terraform
+# Activation de l'api du schedualar
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    - services
+    - enable
+    - cloudscheduler.googleapis.com
+    - --project=${PROJECT_ID}
+  id: 'enable-scheduler-api'
+# Déployer Cloud Run via Terraform
 - name: 'hashicorp/terraform:1.6'
   entrypoint: sh
   args:
@@ -32,6 +41,8 @@ steps:
         -var="extraction_job_image_name=$_IMAGE" \
         -var="repo_name=$_REPO" \
         -var="region=$_REGION" \
+        -var="region_schedular=$_REGION_SCHEDULAR" \
+
 
 
 options:

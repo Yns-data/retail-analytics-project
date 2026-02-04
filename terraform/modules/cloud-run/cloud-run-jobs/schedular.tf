@@ -7,7 +7,7 @@ resource "google_cloud_scheduler_job" "job_triggers" {
 
   name     = "${each.value.name}-scheduler"
   project  = var.project_id
-  region   = var.region
+  region   = var.region_schedular
 
   schedule  = each.value.scheduler.schedule
   time_zone = each.value.scheduler.timezone
