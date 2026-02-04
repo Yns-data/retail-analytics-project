@@ -5,6 +5,10 @@ from datetime import datetime
 from google.cloud import storage, secretmanager
 import json
 import time
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
 
 load_dotenv()
 SECRET_NAME = os.getenv("SECRET_NAME")
@@ -59,9 +63,9 @@ def fetching_data():
                         f"{API_URL}/{route}", 
                         headers=HEADERS,
                         params={"date":date_time}).json())
-            print(f"Data fetched successfully for {route}")
+            logging.info(f"Data fetched successfully for {route}")
         except Exception as e:
-            print(f"An error has occured while fetching the route {route}: {e}")
+            logging.error(f"An error has occured while fetching the route {route}: {e}")
 
     # storage 
     try:
@@ -69,9 +73,9 @@ def fetching_data():
         bucket = client.bucket(BUCKET_NAME)
         blob = bucket.blob(f"data/{date_time}.json")
         blob.upload_from_string(data=json.dumps(results))
-        print("Data stored successfully")
+        logging.info("Data stored successfully")
     except Exception as e:
-        print(f"An error has occured while storing the data: {e}")
+        logging.error(f"An error has occured while storing the data: {e}")
 
 if __name__ == "__main__":
     for i in range(4):
@@ -79,7 +83,7 @@ if __name__ == "__main__":
             fetching_data()
             time.sleep(5)
         except Exception as e :
-            print(f"an error has occured while fetching the data in {i} iteration: {e}")
+            logging.error(f"an error has occured while fetching the data in {i} iteration: {e}")
 
 
 
