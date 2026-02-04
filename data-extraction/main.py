@@ -7,6 +7,7 @@ import json
 import time
 import logging
 
+logger = logging.getLogger("Extraction")
 logging.basicConfig(level=logging.INFO)
 
 
@@ -63,9 +64,9 @@ def fetching_data():
                         f"{API_URL}/{route}", 
                         headers=HEADERS,
                         params={"date":date_time}).json())
-            logging.info(f"Data fetched successfully for {route}")
+            logger.info(f"Data fetched successfully for {route}")
         except Exception as e:
-            logging.error(f"An error has occured while fetching the route {route}: {e}")
+            logger.error(f"An error has occured while fetching the route {route}: {e}")
 
     # storage 
     try:
@@ -73,9 +74,9 @@ def fetching_data():
         bucket = client.bucket(BUCKET_NAME)
         blob = bucket.blob(f"data/{date_time}.json")
         blob.upload_from_string(data=json.dumps(results))
-        logging.info("Data stored successfully")
+        logger.info("Data stored successfully")
     except Exception as e:
-        logging.error(f"An error has occured while storing the data: {e}")
+        logger.error(f"An error has occured while storing the data: {e}")
 
 if __name__ == "__main__":
     for i in range(4):
@@ -83,7 +84,7 @@ if __name__ == "__main__":
             fetching_data()
             time.sleep(5)
         except Exception as e :
-            logging.error(f"an error has occured while fetching the data in {i} iteration: {e}")
+            logger.error(f"an error has occured while fetching the data in {i} iteration: {e}")
 
 
 
