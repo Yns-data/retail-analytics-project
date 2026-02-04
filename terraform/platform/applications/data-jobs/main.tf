@@ -12,7 +12,6 @@ module "cloud_run_job_data_extraction" {
   region              = local.common.region
   repo_name = var.repo_name
   service_account = data.terraform_remote_state.data_platform.outputs.service_account_email
-  service_account_name = data.terraform_remote_state.data_platform.outputs.service_account_id
   region_schedular = var.region_schedular
   cloud_run_jobs = {
     extraction = {

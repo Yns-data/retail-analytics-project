@@ -26,9 +26,3 @@ resource "google_cloud_run_v2_job" "jobs" {
     }
   }
 }
-
-resource "google_service_account_iam_member" "self_act_as" {
-  service_account_id = var.service_account_name
-  role               = "roles/iam.serviceAccountUser"
-  member             = "serviceAccount:${var.service_account}"
-}

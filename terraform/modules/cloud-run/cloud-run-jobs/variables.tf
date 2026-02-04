@@ -22,9 +22,9 @@ variable "repo_name" {
   
 }
 
-variable "service_account_name"{
-  type = string
-}
+# variable "service_account_name"{
+#   type = string
+# }
 
 variable "cloud_run_jobs" {
     description = "definition des variables cloud run jobs"
