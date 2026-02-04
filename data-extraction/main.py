@@ -7,7 +7,7 @@ import json
 import time
 import logging
 
-logger = logging.getLogger("Extraction")
+logger = logging.getLogger("Extraction-job")
 logging.basicConfig(level=logging.INFO)
 
 
