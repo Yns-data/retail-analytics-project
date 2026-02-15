@@ -1,0 +1,11 @@
+my_project:
+  target: prod
+  outputs:
+    prod:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('PROJECT_ID') }}"
+      dataset_brut: "{{ env_var('DATASET') }}"
+      dataset_staging: "{{ env_var('DATASET_staging') }}"
+
+      location: EU
