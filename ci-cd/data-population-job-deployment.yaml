@@ -2,7 +2,7 @@ substitutions:
   _REGION: europe-west9
   _REGION_SCHEDULAR: europe-west3
   _REPO: data-api
-  _IMAGE: extraction-job
+  _IMAGE: population-job
 
 
 steps:
@@ -12,15 +12,15 @@ steps:
     - build
     - '-t'
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
-    - 'data-extraction'
-  id : "building image of the extraction job"
+    - 'data-population'
+  id : "building image of the population job"
 
 # Push image
 - name: 'gcr.io/cloud-builders/docker'
   args:
     - push
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
-  id : "pushing image of the extraction job in artefact registry"
+  id : "pushing image of the population job in artefact registry"
 
 # Déployer Cloud Run via Terraform
 - name: 'hashicorp/terraform:1.6'
@@ -31,13 +31,13 @@ steps:
       cd terraform/platform/applications/data-jobs
       terraform init
       terraform apply -auto-approve \
-        -target=module.cloud_run_job_data_extraction[0] \
-        -var="image_extraction_from_data_source_api_tag=$SHORT_SHA" \
-        -var="extraction_job_image_name=$_IMAGE" \
+        -target=module.cloud_run_job_data_processing[0] \
+        -var="image_population_from_data_source_api_tag=$SHORT_SHA" \
+        -var="population_job_image_name=$_IMAGE" \
         -var="repo_name=$_REPO" \
         -var="region=$_REGION" \
         -var="region_schedular=$_REGION_SCHEDULAR"" \
-  id : "Building cloud run extraction job"
+  id : "Building cloud run population job"
 
 
 
