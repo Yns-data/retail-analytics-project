@@ -36,7 +36,7 @@ steps:
         -var="population_job_image_name=$_IMAGE" \
         -var="repo_name=$_REPO" \
         -var="region=$_REGION" \
-        -var="region_schedular=$_REGION_SCHEDULAR"" \
+        -var="region_schedular=$_REGION_SCHEDULAR"
   id : "Building cloud run population job"
 
 
