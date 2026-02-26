@@ -1,0 +1,56 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: "{{ env_var('PROJECT_ID') }}"
+    schema: "{{ env_var('DATASET') }}"
+    tables:
+      - name: "{{ env_var('BQ_TABLE_NAME') }}"
+        description: "Raw sales data table"
+
+models:
+  - name: sales_staging
+    description: "Staging view of sales data with extraction of the first values from arrays"
+    columns:
+      - name: dates
+        description: "Transaction date"
+        tests:
+          - not_null
+      
+      - name: visitors
+        description: "Number of visitors"
+        tests:
+          - not_null
+      
+      - name: pages_viewed
+        description: "Number of pages viewed"
+      
+      - name: cities
+        description: "Visitor's city of origin"
+      
+      - name: food_articles
+        description: "Number of food items viewed/purchased"
+      
+      - name: wear_articles
+        description: "Number of clothing items"
+      
+      - name: electronics_articles
+        description: "Number of electronics items"
+      
+      - name: books_articles
+        description: "Number of books"
+      
+      - name: toys_articles
+        description: "Number of toys"
+      
+      - name: home_articles
+        description: "Number of home items"
+      
+      - name: garden_articles
+        description: "Number of garden items"
+      
+      - name: beauty_articles
+        description: "Number of beauty items"
+      
+      - name: automotive_articles
+        description: "Number of automotive items"

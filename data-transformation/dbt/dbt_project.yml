@@ -1,0 +1,28 @@
+name: 'retail_analytics'
+version: '1.0.0'
+
+profile: 'retail_analytics'
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+
+models:
+  retail_analytics:
+    staging:
+      +materialized: view
+      +schema: staging        # retail_staging : faire attention dbt concataine dataset definit dans profile et schema pour cherche le dataset
+    
+    intermediate:
+      # +materialized: table
+      +schema: intermediate      # retail_intermediate meme chose ici
+
+    marts:
+      # +materialized: table
+      +schema: analytics      # retail_analytics meme chose ici
+
+vars:
+  raw_dataset: "{{ env_var('DATASET') }}"
+  raw_sales: "{{ env_var('BQ_TABLE_NAME') }}"
+  dataset_staging: "{{ env_var('DATASET_STAGING') }}"
+  project_id: "{{ env_var('PROJECT_ID') }}"
+

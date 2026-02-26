@@ -41,6 +41,26 @@ resource "google_cloudbuild_trigger" "data-extraction-job-trigger" {
 }
 
 
+resource "google_cloudbuild_trigger" "data-population-job-trigger" {
+  name = "data-population-job-trigger"
+
+  service_account = "projects/${var.project_id}/serviceAccounts/${var.service_account_email}"
+
+  github {
+    owner = "Yns-data"
+    name  = "retail-analytics-project"
+
+    push {
+      branch = "^main$"
+    }
+  }
+
+  included_files = ["data-population/**","ci-cd/data-population-job-deployment.yaml"]
+
+  filename = "ci-cd/data-population-job-deployment.yaml"
+}
+
+
 resource "google_service_account_iam_member" "cloudbuild_use_sa" {
   service_account_id = var.service_account_name
   role               = "roles/iam.serviceAccountUser"

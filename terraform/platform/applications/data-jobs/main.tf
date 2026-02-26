@@ -29,7 +29,38 @@ module "cloud_run_job_data_extraction" {
       scheduler = {
         enabled = true
         schedule = var.scheduler_cron_for_extraction_job
-    
+      }
+
+  }
+}
+}
+
+module "cloud_run_job_data_processing" {
+  count = var.enable_cloud_run_extraction_job ? 1:0
+  source = "../../../modules/cloud-run/cloud-run-jobs"
+  project_id          = local.common.project_id
+  region              = local.common.region
+  repo_name = var.repo_name
+  service_account = data.terraform_remote_state.data_platform.outputs.service_account_email
+  region_schedular = var.region_schedular
+  cloud_run_jobs = {
+    population = {
+      name =  "population-sales-brut"
+      image_name = var.population_job_image_name
+      image_tag = var.image_population_sales_table_tag
+      env = {
+      (var.env_project_id) = local.common.project_id
+      (var.env_datalake_bucket_name) = data.terraform_remote_state.data_platform.outputs.data_lake_bucket_name
+      (var.env_API_URL_name) =  data.terraform_remote_state.data_source.outputs.cloud_run_api_source_url
+      (var.env_DATASET_name) = "retail_brut"
+      (var.env_BQ_TABLE_NAME_key) = "sales"
+      (var.env_PREFIX_BLOB_name) = "data/"
+      (var.env_PREFIX_BLOB_PROCESSED_name) = "data-processed/"
+
+      }
+      scheduler = {
+        enabled = False
+        schedule = var.scheduler_cron_for_population_job
       }
 
     }

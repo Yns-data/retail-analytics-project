@@ -22,4 +22,9 @@ terraform/platform/applications/data-source-api/.terraform.lock.hcl
 .gitignore
 terraform/platform/applications/data-jobs/.terraform/*
 terraform/platform/.terraform.lock.hcl
-terraform/platform/applications/data-jobs/.terraform.lock.hcl
+terraform/platform/applications/data-jobs/.*
+data-transformation/dbt/target/*
+..gitignore.swp
+data-transformation/dbt/.user.yml
+data-transformation/dbt/logs/*
+

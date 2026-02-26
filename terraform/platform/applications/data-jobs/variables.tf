@@ -71,6 +71,11 @@ variable "scheduler_cron_for_extraction_job" {
   default = "* * * * *"
 }
 
+variable "scheduler_cron_for_population_job" {
+  type =string
+  default = "* * * * *"
+}
+
 variable enable_cloud_run_service_data_source_api {
   type    = bool
   default = true
@@ -98,4 +103,34 @@ variable "extraction_job_image_name" {
 
 variable "region_schedular" {
   type = string
+}
+
+variable "env_DATASET_name" {
+  type = string
+  default = "DATASET"
+}
+
+variable "env_BQ_TABLE_NAME_key" {
+  type = string
+  default = "BQ_TABLE_NAME"
+}
+
+variable "env_PREFIX_BLOB_name" {
+  type = string
+  default = "env_BQ_TABLE_NAME"
+}
+
+variable "env_PREFIX_BLOB_PROCESSED_name" {
+  type = string
+  default = "PREFIX_BLOB_PROCESSED"
+}
+
+variable "population_job_image_name" {
+  type = string
+}
+
+variable "image_population_sales_table_tag" {
+  type = string
+
+  
 }

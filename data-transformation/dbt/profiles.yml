@@ -1,0 +1,13 @@
+retail_analytics:
+  outputs:
+    dev:
+      dataset: retail
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: europe-west9
+      method: oauth
+      priority: interactive
+      project: "{{ env_var('PROJECT_ID') }}"
+      threads: 4
+      type: bigquery
+  target: dev
