@@ -28,3 +28,4 @@ data-transformation/dbt/target/*
 data-transformation/dbt/.user.yml
 data-transformation/dbt/logs/*
 
+data-population/env-population
