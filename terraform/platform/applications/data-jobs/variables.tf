@@ -94,11 +94,14 @@ variable "repo_name" {
 variable "image_extraction_from_data_source_api_tag" {
   description = " tag de l'image docker de la focntion d'extraction des données"
   type        = string
+  default = "default"
 
 }
 
 variable "extraction_job_image_name" {
   type = string
+  default = "default"
+
 }
 
 variable "region_schedular" {
@@ -117,7 +120,7 @@ variable "env_BQ_TABLE_NAME_key" {
 
 variable "env_PREFIX_BLOB_name" {
   type = string
-  default = "env_BQ_TABLE_NAME"
+  default = "PREFIX_BLOB"
 }
 
 variable "env_PREFIX_BLOB_PROCESSED_name" {
@@ -127,10 +130,13 @@ variable "env_PREFIX_BLOB_PROCESSED_name" {
 
 variable "population_job_image_name" {
   type = string
+  default = "default"
+
 }
 
 variable "image_population_sales_table_tag" {
   type = string
+  default = "default"
 
   
 }

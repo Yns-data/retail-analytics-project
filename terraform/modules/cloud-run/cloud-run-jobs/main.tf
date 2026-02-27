@@ -3,6 +3,8 @@ resource "google_cloud_run_v2_job" "jobs" {
   project  = var.project_id
   name     = each.value.name
   location = var.region
+  deletion_protection = false
+
 
   template {
     template {

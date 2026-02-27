@@ -59,7 +59,7 @@ module "cloud_run_job_data_processing" {
 
       }
       scheduler = {
-        enabled = False
+        enabled = false
         schedule = var.scheduler_cron_for_population_job
       }
 
