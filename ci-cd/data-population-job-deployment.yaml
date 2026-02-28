@@ -22,7 +22,7 @@ steps:
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
   id : "pushing image of the population job in artefact registry"
 
-# Déployer Cloud Run via Terraform
+# Deploy Cloud Run with Terraform
 - name: 'hashicorp/terraform:1.6'
   entrypoint: sh
   args:

@@ -1,4 +1,4 @@
-# project_id = "glossy-metric-481911-c7"
+project_id = "glossy-metric-481911-c7"
 # region     = "europe-west9"
 # extraction_job_image_name = "extraction-job"
 # image_extraction_from_data_source_api_tag = "d5e502e"
