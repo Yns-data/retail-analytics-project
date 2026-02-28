@@ -6,7 +6,7 @@ locals {
 }
 
 module "cloud_run_job_data_extraction" {
-  count = var.enable_cloud_run_extraction_job ? 1:0
+  # count = var.enable_cloud_run_extraction_job ? 1:0
   source = "../../../modules/cloud-run/cloud-run-jobs"
   project_id          = local.common.project_id
   region              = local.common.region

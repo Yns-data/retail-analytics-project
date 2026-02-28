@@ -31,7 +31,7 @@ steps:
       cd terraform/platform/applications/data-jobs
       terraform init
       terraform apply -auto-approve \
-        -target=module.cloud_run_job_data_extraction[0] \
+        -target=module.cloud_run_job_data_extraction \
         -var="image_extraction_from_data_source_api_tag=$SHORT_SHA" \
         -var="extraction_job_image_name=$_IMAGE" \
         -var="repo_name=$_REPO" \

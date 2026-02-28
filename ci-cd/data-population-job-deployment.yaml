@@ -31,7 +31,7 @@ steps:
       cd terraform/platform/applications/data-jobs
       terraform init
       terraform apply -auto-approve \
-        -target=module.cloud_run_job_data_processing[0] \
+        -target=module.cloud_run_job_data_processing \
         -var="image_population_sales_table_tag=$SHORT_SHA" \
         -var="population_job_image_name=$_IMAGE" \
         -var="repo_name=$_REPO" \
