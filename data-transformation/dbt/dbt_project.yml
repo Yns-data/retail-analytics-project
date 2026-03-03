@@ -5,6 +5,9 @@ profile: 'retail_analytics'
 
 model-paths: ["models"]
 macro-paths: ["macros"]
+test-paths: ["tests"]
+
+
 
 models:
   retail_analytics:

@@ -27,5 +27,7 @@ data-transformation/dbt/target/*
 ..gitignore.swp
 data-transformation/dbt/.user.yml
 data-transformation/dbt/logs/*
-
+**/__pycache__/
 data-population/env-population
+data-transformation/dbt/dbt_internal_packages/*
+data-transformation/dbt/env-dbt/*
