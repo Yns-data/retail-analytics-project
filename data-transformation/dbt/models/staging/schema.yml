@@ -7,6 +7,13 @@ sources:
     tables:
       - name: "{{ env_var('BQ_TABLE_NAME') }}"
         description: "Raw sales data table"
+        columns:
+          - name: dates
+            description: "Transaction date"
+            tests:
+              - not_null
+
+      
 
 models:
   - name: sales_staging

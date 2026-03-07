@@ -31,3 +31,5 @@ data-transformation/dbt/logs/*
 data-population/env-population
 data-transformation/dbt/dbt_internal_packages/*
 data-transformation/dbt/env-dbt/*
+data-transformation/dbt/dbt-env/*
+data-transformation/env-dbt/*
