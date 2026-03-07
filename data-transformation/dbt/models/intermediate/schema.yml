@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: sum_aggregate_transformed_table_shops_by_day
+    description: "Daily aggregate of visitors, pages, and article categories"
+    columns:
+      - name: day
+        description: "Day name used as the daily grouping key"
+        tests:
+          - not_null
+          - unique
+
+  - name: base_data_day
+    description: "Daily aggregate enriched with total_sum across all tracked article categories"
+    columns:
+      - name: day
+        description: "Day name used as the daily grain"
+        tests:
+          - not_null
+          - unique
+      - name: total_sum
+        description: "Total number of items across all tracked article categories for the day"
+        tests:
+          - not_null
+
+  - name: sum_aggregate_transformed_table_shops_by_month
+    description: "Monthly aggregate of visitors, pages, and article categories"
+    columns:
+      - name: month
+        description: "Month name used as the monthly grouping key"
+        tests:
+          - not_null
+          - unique
+
+  - name: base_data_month
+    description: "Monthly aggregate enriched with total_sum across all tracked article categories"
+    columns:
+      - name: month
+        description: "Month name used as the monthly grain"
+        tests:
+          - not_null
+          - unique
+      - name: total_sum
+        description: "Total number of items across all tracked article categories for the month"
+        tests:
+          - not_null
+
+  - name: sum_aggregate_transformed_table_shops_by_hour
+    description: "Hourly aggregate of visitors, pages, and article categories"
+    columns:
+      - name: hour
+        description: "Hour used as the hourly grouping key"
+        tests:
+          - not_null
+          - unique
+
+  - name: base_data_hour
+    description: "Hourly aggregate enriched with total_sum across all tracked article categories"
+    columns:
+      - name: hour
+        description: "Hour used as the hourly grain"
+        tests:
+          - not_null
+          - unique
+      - name: total_sum
+        description: "Total number of items across all tracked article categories for the hour"
+        tests:
+          - not_null

@@ -12,8 +12,12 @@ sources:
             description: "Transaction date"
             tests:
               - not_null
-
-      
+          - name: visitors
+            description: "Number of visitors in the event payload"
+          - name: pages_viewed
+            description: "Number of pages viewed in the event payload"
+          - name: cities
+            description: "City associated with the event payload"
 
 models:
   - name: sales_staging
@@ -31,33 +35,93 @@ models:
       
       - name: pages_viewed
         description: "Number of pages viewed"
-      
+        tests:
+          - not_null
+
       - name: cities
         description: "Visitor's city of origin"
-      
+        tests:
+          - not_null
+
       - name: food_articles
         description: "Number of food items viewed/purchased"
-      
+        tests:
+          - not_null
+
       - name: wear_articles
         description: "Number of clothing items"
-      
+        tests:
+          - not_null
+
       - name: electronics_articles
         description: "Number of electronics items"
-      
+        tests:
+          - not_null
+
+      - name: sports_articles
+        description: "Number of sports items"
+        tests:
+          - not_null
+
       - name: books_articles
         description: "Number of books"
-      
+        tests:
+          - not_null
+
       - name: toys_articles
         description: "Number of toys"
-      
+        tests:
+          - not_null
+
       - name: home_articles
         description: "Number of home items"
-      
+        tests:
+          - not_null
+
       - name: garden_articles
         description: "Number of garden items"
-      
+        tests:
+          - not_null
+
       - name: beauty_articles
         description: "Number of beauty items"
-      
+        tests:
+          - not_null
+
       - name: automotive_articles
         description: "Number of automotive items"
+        tests:
+          - not_null
+
+      - name: time_stamp
+        description: "Parsed timestamp generated from dates"
+        tests:
+          - not_null
+
+  - name: sales_staging_date_decompose
+    description: "Staging model enriched with extracted calendar fields from time_stamp"
+    columns:
+      - name: year
+        description: "Calendar year extracted from time_stamp"
+        tests:
+          - not_null
+      - name: month
+        description: "Month name extracted from time_stamp"
+        tests:
+          - not_null
+      - name: day
+        description: "Day name extracted from time_stamp"
+        tests:
+          - not_null
+      - name: hour
+        description: "Hour extracted from time_stamp"
+        tests:
+          - not_null
+      - name: minutes
+        description: "Minute extracted from time_stamp"
+        tests:
+          - not_null
+      - name: time_stamp
+        description: "Parsed transaction timestamp"
+        tests:
+          - not_null

@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: percentage_query_by_day
+    description: "Day-level analytical mart with percentage contribution metrics by metric/category"
+    columns:
+      - name: day
+        description: "Day name at mart grain"
+        tests:
+          - not_null
+          - unique
+      - name: total_sum
+        description: "Raw total used as denominator before rounding"
+        tests:
+          - not_null
+      - name: total_sum_rounded
+        description: "Rounded total used for reporting readability"
+        tests:
+          - not_null
+
+  - name: percentage_query_by_month
+    description: "Month-level analytical mart with percentage contribution metrics by metric/category"
+    columns:
+      - name: month
+        description: "Month name at mart grain"
+        tests:
+          - not_null
+          - unique
+      - name: total_sum
+        description: "Raw total used as denominator before rounding"
+        tests:
+          - not_null
+      - name: total_sum_rounded
+        description: "Rounded total used for reporting readability"
+        tests:
+          - not_null
+
+  - name: percentage_query_by_hour
+    description: "Hour-level analytical mart with percentage contribution metrics by metric/category"
+    columns:
+      - name: hour
+        description: "Hour at mart grain"
+        tests:
+          - not_null
+          - unique
+      - name: total_sum
+        description: "Raw total used as denominator before rounding"
+        tests:
+          - not_null
+      - name: total_sum_rounded
+        description: "Rounded total used for reporting readability"
+        tests:
+          - not_null
