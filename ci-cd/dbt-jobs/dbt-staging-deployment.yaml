@@ -12,7 +12,7 @@ steps:
     - build
     - '-t'
     - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
-    - '.'
+    - 'data-transformation'
   id : "building image of the dbt project"
 
 # Push image
