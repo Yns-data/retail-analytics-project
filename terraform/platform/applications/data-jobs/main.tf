@@ -74,7 +74,7 @@ module "cloud_run_job_dbt_staging" {
   region_schedular = var.region_schedular
   cloud_run_jobs = {
     dbt_staging = {
-      name =  "dbt_staging_job"
+      name =  "dbt-staging-job"
       image_name = var.dbt_project_image_name
       image_tag = var.image_dbt_project_tag
       command = ["dbt"]

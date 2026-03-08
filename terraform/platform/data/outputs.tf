@@ -10,3 +10,6 @@ output "data_lake_bucket_name" {
   value = module.google_storage_buckets.datalake_bucket_name
 }
 
+output "dbt_bucket_name" {
+  value = module.google_storage_buckets.bucket_dbt_name
+}
