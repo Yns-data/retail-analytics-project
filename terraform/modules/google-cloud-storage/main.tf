@@ -41,3 +41,7 @@ resource "google_storage_bucket" "bucket_datalake" {
     }
   }
 }
+resource "google_storage_bucket" "bucket_dbt" {
+  name     = "dbt-bucket-${var.project_id}"
+  location = var.region
+}

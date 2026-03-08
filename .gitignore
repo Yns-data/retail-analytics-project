@@ -33,3 +33,4 @@ data-transformation/dbt/dbt_internal_packages/*
 data-transformation/dbt/env-dbt/*
 data-transformation/dbt/dbt-env/*
 data-transformation/env-dbt/*
+terraform/platform/applications/data-jobs/terraform-test-command.txt

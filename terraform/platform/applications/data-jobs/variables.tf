@@ -140,3 +140,26 @@ variable "image_population_sales_table_tag" {
 
   
 }
+
+variable "dbt_project_image_name" {
+  type = string
+  default = "default"
+
+}
+
+variable "image_dbt_project_tag" {
+  type = string
+  default = "default"
+
+}
+
+variable "env_dbt_bucket_name" {
+  type = string
+  default = "BUCKET_NAME"
+}
+
+variable "env_LOCATION_name" {  
+  type = string
+  default = "LOCATION"
+}
+

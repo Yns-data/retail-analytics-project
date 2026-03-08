@@ -26,6 +26,6 @@ models:
 vars:
   raw_dataset: "{{ env_var('DATASET') }}"
   raw_sales: "{{ env_var('BQ_TABLE_NAME') }}"
-  dataset_staging: "{{ env_var('DATASET_STAGING') }}"
   project_id: "{{ env_var('PROJECT_ID') }}"
+  location: "{{ env_var('LOCATION') }}"
 

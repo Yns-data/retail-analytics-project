@@ -60,6 +60,26 @@ resource "google_cloudbuild_trigger" "data-population-job-trigger" {
   filename = "ci-cd/data-population-job-deployment.yaml"
 }
 
+resource "google_cloudbuild_trigger" "dbt-staging-trigger" {
+  name = "dbt-staging-trigger"
+
+  service_account = "projects/${var.project_id}/serviceAccounts/${var.service_account_email}"
+
+  github {
+    owner = "Yns-data"
+    name  = "retail-analytics-project"
+
+    push {
+      branch = "^main$"
+    }
+  }
+
+  included_files = ["data-transformation/**","ci-cd/dbt-jobs/dbt-staging-deployment.yaml"]
+
+  filename = "ci-cd/dbt-jobs/staging-deployment.yaml"
+}
+
+
 
 resource "google_service_account_iam_member" "cloudbuild_use_sa" {
   service_account_id = var.service_account_name

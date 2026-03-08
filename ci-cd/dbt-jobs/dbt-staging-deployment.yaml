@@ -1,0 +1,46 @@
+substitutions:
+  _REGION: europe-west9
+  _REGION_SCHEDULAR: europe-west3
+  _REPO: data-api
+  _IMAGE: dbt-project
+
+
+steps:
+# Build Docker
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - build
+    - '-t'
+    - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
+    - 'dbt-project'
+  id : "building image of the dbt project"
+
+# Push image
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - push
+    - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:$SHORT_SHA'
+  id : "pushing image of the dbt staging job in artefact registry"
+
+# Deploy Cloud Run with Terraform
+- name: 'hashicorp/terraform:1.6'
+  entrypoint: sh
+  args:
+    - -c
+    - |
+      cd terraform/platform/applications/data-jobs
+      terraform init
+      terraform apply -auto-approve \
+              -target=module.cloud_run_job_dbt_staging \
+              -var="image_dbt_project_tag=$SHORT_SHA" \
+              -var="dbt_project_image_name=$_IMAGE" \
+              -var="repo_name=$_REPO" \
+              -var="region=$_REGION" \
+              -var="region_schedular=$_REGION_SCHEDULAR" \
+              -lock=false
+  id : "Building cloud run dbt staging"
+
+
+
+options:
+  logging: CLOUD_LOGGING_ONLY

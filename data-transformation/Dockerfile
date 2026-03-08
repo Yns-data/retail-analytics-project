@@ -14,12 +14,12 @@ RUN apt-get update && apt-get install -y gcc \
 #     BQ_TABLE_NAME=sales \
 #     PREFIX_BLOB=data/ \
 #     PREFIX_BLOB_PROCESSED=data-processed/ \
-#     DATASET_STAGING=retail_staging
+#     DATASET_STAGING=retail_staging \
+#     LOCATION=europe-west9
 
-COPY requirements.txt .
 RUN pip install dbt-bigquery
 
 COPY dbt ./dbt
 WORKDIR /app/dbt
 
-CMD ["dbt", "run"]
+# CMD ["dbt", "run", "--select", "staging"]

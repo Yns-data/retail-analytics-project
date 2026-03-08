@@ -6,7 +6,6 @@ locals {
 }
 
 module "cloud_run_job_data_extraction" {
-  # count = var.enable_cloud_run_extraction_job ? 1:0
   source = "../../../modules/cloud-run/cloud-run-jobs"
   project_id          = local.common.project_id
   region              = local.common.region
@@ -36,7 +35,6 @@ module "cloud_run_job_data_extraction" {
 }
 
 module "cloud_run_job_data_processing" {
-  # count = var.enable_cloud_run_extraction_job ? 1:0
   source = "../../../modules/cloud-run/cloud-run-jobs"
   project_id          = local.common.project_id
   region              = local.common.region
@@ -56,6 +54,37 @@ module "cloud_run_job_data_processing" {
       (var.env_BQ_TABLE_NAME_key) = "sales"
       (var.env_PREFIX_BLOB_name) = "data/"
       (var.env_PREFIX_BLOB_PROCESSED_name) = "data-processed/"
+
+      }
+      scheduler = {
+        enabled = false
+        schedule = var.scheduler_cron_for_population_job
+      }
+
+    }
+  }
+}
+
+module "cloud_run_job_dbt_staging" {
+  source = "../../../modules/cloud-run/cloud-run-jobs"
+  project_id          = local.common.project_id
+  region              = local.common.region
+  repo_name = var.repo_name
+  service_account = data.terraform_remote_state.data_platform.outputs.service_account_email
+  region_schedular = var.region_schedular
+  cloud_run_jobs = {
+    dbt_staging = {
+      name =  "dbt_staging_job"
+      image_name = var.dbt_project_image_name
+      image_tag = var.image_dbt_project_tag
+      command = ["dbt"]
+      args    = ["run", "--select", "staging"]
+      env = {
+      (var.env_project_id) = local.common.project_id
+      (var.env_dbt_bucket_name) = data.terraform_remote_state.data_platform.outputs.dbt_bucket_name
+      (var.env_DATASET_name) = "retail_brut"
+      (var.env_BQ_TABLE_NAME_key) = "sales"
+      (var.env_LOCATION_name) = local.common.region
 
       }
       scheduler = {

@@ -37,6 +37,8 @@ variable "cloud_run_jobs" {
     enabled  = bool
     schedule = string
     timezone = optional(string, "UTC")
+    command = optional(list(string))
+    args = optional(list(string))
     })
   }))
 }

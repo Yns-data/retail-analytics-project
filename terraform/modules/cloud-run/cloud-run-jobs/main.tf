@@ -14,7 +14,8 @@ resource "google_cloud_run_v2_job" "jobs" {
       containers {
         image = "${var.region}-docker.pkg.dev/${var.project_id}/${var.
         repo_name}/${each.value.image_name}:${each.value.image_tag}"
-      
+        command = lookup(each.value, "command", null)
+        args = lookup(each.value, "args", null)
       dynamic "env" {
         for_each = each.value.env
         content {
