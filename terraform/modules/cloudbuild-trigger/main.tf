@@ -76,7 +76,7 @@ resource "google_cloudbuild_trigger" "dbt-staging-trigger" {
 
   included_files = ["data-transformation/**","ci-cd/dbt-jobs/dbt-staging-deployment.yaml"]
 
-  filename = "ci-cd/dbt-jobs/staging-deployment.yaml"
+  filename = "ci-cd/dbt-jobs/dbt-staging-deployment.yaml"
 }
 
 
