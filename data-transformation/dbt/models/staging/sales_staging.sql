@@ -9,7 +9,7 @@
     }
 ) }}
 
-{% set rel = source('raw_data', env_var('BQ_TABLE_NAMEE')) %}
+{% set rel = source('raw_data', env_var('BQ_TABLE_NAME')) %}
 
 with src as (
   select
