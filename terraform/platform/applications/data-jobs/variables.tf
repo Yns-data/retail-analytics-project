@@ -163,3 +163,14 @@ variable "env_LOCATION_name" {
   default = "LOCATION"
 }
 
+variable "command_dbt" {
+  type = list(string)
+  default = ["dbt"]
+  
+}
+
+variable "args_dbt_staging" {
+  type = list(string)
+  default = ["run", "--select", "staging"]
+}
+

@@ -33,12 +33,12 @@ variable "cloud_run_jobs" {
     image_name = string
     image_tag  = string
     env = map(string)
+    command = optional(list(string))
+    args = optional(list(string))
     scheduler = object({
     enabled  = bool
     schedule = string
     timezone = optional(string, "UTC")
-    command = optional(list(string))
-    args = optional(list(string))
     })
   }))
 }

@@ -77,8 +77,8 @@ module "cloud_run_job_dbt_staging" {
       name =  "dbt-staging-job"
       image_name = var.dbt_project_image_name
       image_tag = var.image_dbt_project_tag
-      command = ["dbt"]
-      args    = ["run", "--select", "staging"]
+      command = var.command_dbt
+      args    = var.args_dbt_staging
       env = {
       (var.env_project_id) = local.common.project_id
       (var.env_dbt_bucket_name) = data.terraform_remote_state.data_platform.outputs.dbt_bucket_name
