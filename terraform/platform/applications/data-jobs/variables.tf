@@ -174,3 +174,12 @@ variable "args_dbt_staging" {
   default = ["run", "--select", "staging"]
 }
 
+variable "args_dbt_intermidate" {
+  type = list(string)
+  default = ["run", "--select", "intermidate"]
+}
+
+variable "args_dbt_marts" {
+  type = list(string)
+  default = ["run", "--select", "marts"]
+}

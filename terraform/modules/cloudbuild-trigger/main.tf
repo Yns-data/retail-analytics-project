@@ -60,8 +60,8 @@ resource "google_cloudbuild_trigger" "data-population-job-trigger" {
   filename = "ci-cd/data-population-job-deployment.yaml"
 }
 
-resource "google_cloudbuild_trigger" "dbt-staging-trigger" {
-  name = "dbt-staging-trigger"
+resource "google_cloudbuild_trigger" "dbt-pipeline-trigger" {
+  name = "dbt-pipeline-trigger"
 
   service_account = "projects/${var.project_id}/serviceAccounts/${var.service_account_email}"
 
@@ -74,9 +74,9 @@ resource "google_cloudbuild_trigger" "dbt-staging-trigger" {
     }
   }
 
-  included_files = ["data-transformation/**","ci-cd/dbt-jobs/dbt-staging-deployment.yaml"]
+  included_files = ["data-transformation/**","ci-cd/dbt-jobs/**"]
 
-  filename = "ci-cd/dbt-jobs/dbt-staging-deployment.yaml"
+  filename = "ci-cd/dbt-jobs/dbt-pipeline-deployment.yaml"
 }
 
 

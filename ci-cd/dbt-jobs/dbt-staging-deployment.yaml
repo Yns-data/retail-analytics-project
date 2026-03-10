@@ -40,6 +40,41 @@ steps:
               -lock=false
   id : "Building cloud run dbt staging job"
 
+- name: 'hashicorp/terraform:1.6'
+  entrypoint: sh
+  args:
+    - -c
+    - |
+      cd terraform/platform/applications/data-jobs
+      terraform init
+      terraform apply -auto-approve \
+              -target=module.cloud_run_job_dbt_intermidate \
+              -var="image_dbt_project_tag=$SHORT_SHA" \
+              -var="dbt_project_image_name=$_IMAGE" \
+              -var="repo_name=$_REPO" \
+              -var="region=$_REGION" \
+              -var="region_schedular=$_REGION_SCHEDULAR" \
+              -lock=false
+  id : "Building cloud run dbt intermidate job"
+
+- name: 'hashicorp/terraform:1.6'
+  entrypoint: sh
+  args:
+    - -c
+    - |
+      cd terraform/platform/applications/data-jobs
+      terraform init
+      terraform apply -auto-approve \
+              -target=module.cloud_run_job_dbt_marts \
+              -var="image_dbt_project_tag=$SHORT_SHA" \
+              -var="dbt_project_image_name=$_IMAGE" \
+              -var="repo_name=$_REPO" \
+              -var="region=$_REGION" \
+              -var="region_schedular=$_REGION_SCHEDULAR" \
+              -lock=false
+  id : "Building cloud run dbt marts job"
+
+
 
 
 options:
