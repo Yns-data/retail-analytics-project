@@ -55,7 +55,7 @@ steps:
               -var="region=$_REGION" \
               -var="region_schedular=$_REGION_SCHEDULAR" \
               -lock=false
-  id : "Building cloud run dbt intermidate job"
+  id : "Building cloud run dbt intermidiate job"
 
 - name: 'hashicorp/terraform:1.6'
   entrypoint: sh
