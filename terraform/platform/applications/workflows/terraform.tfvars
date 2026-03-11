@@ -1,0 +1,8 @@
+project_id = "glossy-metric-481911-c7"
+region     = "europe-west9"
+# extraction_job_image_name = "extraction-job"
+# image_extraction_from_data_source_api_tag = "d5e502e"
+# repo_name = "data-api"
+# region_schedular = "europe-west3"
+# image_population_sales_table_tag = "e3eefd6"
+# population_job_image_name = "population-job"

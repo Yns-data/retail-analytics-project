@@ -30,8 +30,23 @@ resource "google_project_iam_member" "full_access_roles" {
     "roles/logging.logWriter",
     "roles/logging.viewer",
 
-    # IAM (pour permettre à Cloud Build / Run d’utiliser le SA)
-    "roles/iam.serviceAccountUser"
+    # IAM
+    "roles/iam.serviceAccountUser",
+
+    # Workflows
+    "roles/workflows.admin",
+    "roles/workflows.invoker",
+
+    # Composer
+    "roles/composer.admin",
+    "roles/composer.worker",
+    "roles/composer.user",
+    "roles/composer.environmentAndStorageObjectAdmin",
+
+    # Composer dépendances fréquentes
+    "roles/container.admin",        # GKE utilisé par Composer
+    "roles/compute.networkAdmin",   # gestion réseau
+    "roles/compute.viewer"
   ])
 
   project = var.project_id

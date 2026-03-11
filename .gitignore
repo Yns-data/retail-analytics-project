@@ -35,3 +35,6 @@ data-transformation/dbt/dbt-env/*
 data-transformation/env-dbt/*
 terraform/platform/applications/data-jobs/terraform-test-command.txt
 terraform/platform/applications/data-jobs/logs/dbt.log
+terraform/platform/applications/workflows/.terraform/*
+
+terraform/platform/applications/workflows/.terraform.lock.hcl
