@@ -11,3 +11,4 @@ retail_analytics:
       threads: 4
       type: bigquery
   target: dev
+  

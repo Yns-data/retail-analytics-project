@@ -38,3 +38,4 @@ terraform/platform/applications/data-jobs/logs/dbt.log
 terraform/platform/applications/workflows/.terraform/*
 
 terraform/platform/applications/workflows/.terraform.lock.hcl
+terraform/platform/applications/data-jobs/test-population-job.tfvars

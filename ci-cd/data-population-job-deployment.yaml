@@ -37,6 +37,7 @@ steps:
         -var="repo_name=$_REPO" \
         -var="region=$_REGION" \
         -var="region_schedular=$_REGION_SCHEDULAR"
+        -lock=false
   id : "Building cloud run population job"
 
 
