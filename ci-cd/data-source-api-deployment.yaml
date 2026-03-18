@@ -29,7 +29,9 @@ steps:
       terraform init
       terraform apply -auto-approve \
         -var="data_source_api_image_tag=$SHORT_SHA" \
-        
+ 
+  id : "Building cloud run service data-source-api"
+  
 
 options:
   logging: CLOUD_LOGGING_ONLY
